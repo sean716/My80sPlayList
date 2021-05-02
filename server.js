@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+
 const express = require('express')
 const mongoose = require('mongoose')
 const Article = require('./models/article')
@@ -7,7 +11,7 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 
 //connection to mongodb 
-mongoose.connect('mongodb://localhost/blog', { 
+mongoose.connect(process.env.DATABASE_URL, { 
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true 
 })
 
